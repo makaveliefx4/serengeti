@@ -45,14 +45,12 @@ const BookingPage = () => {
   const { toast } = useToast();
   const [isContactOpen, setIsContactOpen] = useState(false);
   const location = useLocation();
-
-  // New state variables for personal information
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [nationality, setNationality] = useState("");
-  const [passport, setPassport] = useState("");
+  const [phone2, setphone2] = useState("");
   const [address, setAddress] = useState("");
  
   /**
@@ -109,7 +107,7 @@ const BookingPage = () => {
       name: "Family Safari Adventure",
       duration: "7 days / 6 nights",
       price: 3299,
-      image: "/api/placeholder/300/200", 
+      image: "https://www.serengeti.com/assets/img/wildlife-spectacle-great-migration-tanzania.jpg", 
       highlights: ["Kid-friendly", "Educational tours", "Family activities"],
       includes: ["Family rooms", "Child activities", "All meals", "Guide"]
     }
@@ -135,7 +133,7 @@ const BookingPage = () => {
       date: selectedDate?.toISOString(), // Convert date to a string for Firestore
       phone: phone,
       nationality: nationality,
-      passport: passport,
+      phone2: phone2,
     };
     
     // Call the saveBooking function with the collected data
@@ -146,7 +144,7 @@ const BookingPage = () => {
     { id: 1, title: "Choose Safari", icon: MapPin },
     { id: 2, title: "Travel Details", icon: CalendarIcon },
     { id: 3, title: "Personal Info", icon: User },
-    { id: 4, title: "Payment", icon: CreditCard }
+    { id: 4, title: "Confirm Booking", icon: CreditCard }
   ];
 
   return (
@@ -400,8 +398,8 @@ const BookingPage = () => {
                             <Input id="nationality" placeholder="Tanzania" value={nationality} onChange={(e) => setNationality(e.target.value)} />
                           </div>
                           <div>
-                            <Label htmlFor="passport">Passport Number</Label>
-                            <Input id="passport" placeholder="A12345678" value={passport} onChange={(e) => setPassport(e.target.value)} />
+                            <Label htmlFor="Phone2">Phone2 Number</Label>
+                            <Input id="Phone2" placeholder="+1 Another No" value={phone2} onChange={(e) => setphone2(e.target.value)} />
                           </div>
                         </div>
 
@@ -424,7 +422,7 @@ const BookingPage = () => {
                            
                             className="flex-1 hover:opacity-90"
                           >
-                            Continue to Payment
+                            Continue to booking
                           </Button>
                           
                         </div>
@@ -432,11 +430,11 @@ const BookingPage = () => {
                     </Card>
                   </TabsContent>
 
-                  {/* Step 4: Payment */}
+                  {/* Step 4: Confirm Booking */}
                   <TabsContent value="step-4">
                     <Card>
                       <CardHeader>
-                        <CardTitle>Payment Information</CardTitle>
+                        <CardTitle>Confirm Booking</CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-6">
                         <div className="bg-secondary/30 rounded-lg p-4 mb-6">
