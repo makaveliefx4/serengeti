@@ -246,7 +246,7 @@ const Destinations = () => {
         {/* Filters & Content */}
         <section className="py-8">
           <div className="container mx-auto px-4">
-            <div className="flex gap-8">
+            <div className="flex flex-col gap-8 lg:flex-row">
               {/* Sidebar Filters */}
               <div className={`${showFilters ? 'block' : 'hidden'} lg:block`}>
                 <SearchFilters />
