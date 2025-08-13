@@ -32,6 +32,7 @@ const Header = () => {
    const [isSearchOpen, setIsSearchOpen] = useState(false);
    const [isToursOpen, setIsToursOpen] = useState(false);
    const [isContactOpen, setIsContactOpen] = useState(false);
+    const [isDestinationsOpen, setIsDestinationsOpen] = useState(false);
   const location = useLocation();
 
   const destinations = [
@@ -221,9 +222,24 @@ const Header = () => {
         <div className="md:hidden border-t bg-background">
           <div className="container mx-auto py-4 px-4">
             <div className="flex flex-col space-y-4">
-              <Link to="/destinations" className="text-sm font-medium">
-                Destinations
-              </Link>
+              <button
+                className="flex items-center justify-between text-sm font-medium"
+                onClick={() => setIsDestinationsOpen((prev) => !prev)}
+                aria-expanded={isDestinationsOpen}
+                aria-controls="mobile-tours-list"
+              >
+                <span>Destinations</span>
+                <ChevronDown className={cn("h-4 w-4 transition-transform", isDestinationsOpen ? "rotate-180" : "")} />
+              </button>
+              {isDestinationsOpen && (
+                <nav id="mobile-tours-list" className="pl-4 flex flex-col space-y-3">
+                  {destinations.map((item) => (
+                    <Link key={item.href} to={item.href} className="text-sm text-muted-foreground hover:text-foreground">
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
+              )}
               <button
                 className="flex items-center justify-between text-sm font-medium"
                 onClick={() => setIsToursOpen((prev) => !prev)}
@@ -242,10 +258,10 @@ const Header = () => {
                   ))}
                 </nav>
               )}
-              <Link to="/safari-experiences" className="text-sm font-medium">
+              <Link to="/experiences" className="text-sm font-medium">
                 Safari Experiences
               </Link>
-              <Link to="/safari-blog" className="text-sm font-medium">
+              <Link to="/blog" className="text-sm font-medium">
                 Safari Blog
               </Link>
               <div className="pt-4 border-t">
