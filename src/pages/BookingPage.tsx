@@ -110,6 +110,15 @@ const BookingPage = () => {
       image: "https://www.serengeti.com/assets/img/wildlife-spectacle-great-migration-tanzania.jpg", 
       highlights: ["Kid-friendly", "Educational tours", "Family activities"],
       includes: ["Family rooms", "Child activities", "All meals", "Guide"]
+    },
+    {
+      id: "culture-safari",
+      name: "Culture Safari Adventure",
+      duration: "Only one Day",
+      price: 4000,
+      image: "",
+      highlights: ["Cultural learning", "hunting and Gathering learning", "Game Drive"],
+      includes: ["Private Guides", "Meals", "Adventure", "Private cars"]
     }
   ];
 
